@@ -20,9 +20,12 @@ export class Clima {
     
     TIP3: Utilize fetch para realizar el request.
     */
-    getClima() {
-        // TODO:
-        return data;
+     async getClima() {
+         
+        const clima = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${this.ciudad},${this.pais}&appid=d0f4018e3c992726849a47b78861105a&units=metric`);
+        if (clima) {
+            return clima.json();
+        }
     }
 
     changeLocation(ciudad, pais) {
