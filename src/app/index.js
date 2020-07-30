@@ -12,7 +12,11 @@ require('./index.css');
 
 async function ObtenerClima() {
     const data = await clima.getClima();
-    ui.render(data);
+    if (data.cod === 200) {
+        ui.render(data);
+    } else {
+        alert(data.message);
+    }
 }
 
 document.getElementById('w-change-btn').addEventListener('click', (e) => {
@@ -23,5 +27,4 @@ document.getElementById('w-change-btn').addEventListener('click', (e) => {
     ObtenerClima();
     e.preventDefault();
 });
-
 document.addEventListener('DOMContentLoaded', ObtenerClima);
